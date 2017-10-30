@@ -26,14 +26,12 @@ Images:
 **2. GARBAGE CAN:**
 * Dimensions: 50 px * 50 px
 
-![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/garbage_can.png "Garbage Can")
+![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/garbagecan.png "Garbage Can")
 
 **3. TRASH:**
 * Dimensions: 25 px * 25 px
 
-![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/banana.png "Banana")
-
-![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/paper.png "Paper")
+![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/banana.png "Banana") ![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/paper.png "Paper")
 
 **4. TREASURE:**
 * Dimensions: 25 px * 25 px
