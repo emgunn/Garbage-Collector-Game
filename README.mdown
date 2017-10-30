@@ -17,15 +17,16 @@ Coded in Python with the Pygame library
 
 Images:
 =======
-⋅⋅1. **BANNER**:
-* Dimensions: 600 px x 100 px
+**1. BANNER:**
+* Dimensions: 600 px * 100 px
 * Location: Always (0, 0)
+![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/fixed_banner.png "Banner")
 
-⋅⋅2. **GARBAGE CAN**:
-* Dimensions: 50 px x 50 px
+**2. GARBAGE CAN:**
+* Dimensions: 50 px * 50 px
 
-⋅⋅3. **TRASH**:
-* Dimensions: 25 px x 25 px
+**3. TRASH:**
+* Dimensions: 25 px * 25 px
 
-⋅⋅4. **TREASURE**:
-* Dimensions: 25 px x 25 px
+**4. TREASURE:**
+* Dimensions: 25 px * 25 px
