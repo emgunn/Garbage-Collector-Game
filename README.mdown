@@ -1,0 +1,31 @@
+README v1.0
+===========
+
+Garbage Collector is a simple game where you control a trash can and attempt to collect as many pieces of trash until the given time limit is reached. Avoid pieces of treasure as you are not supposed to throw treasure away.
+
+How to Play:
+============
+* Use the Arrow keys to move
+* Collect the trash and avoid the treasure
+* Collecting trash without collecting treasure grants a bonus for each consecutive piece of trash picked up
+* Score as many points as possible within the given time limit
+
+About:
+======
+Version 1.0
+Coded in Python with the Pygame library
+
+Images:
+=======
+⋅⋅1. **BANNER**:
+* Dimensions: 600 px x 100 px
+* Location: Always (0, 0)
+
+⋅⋅2. **GARBAGE CAN**:
+* Dimensions: 50 px x 50 px
+
+⋅⋅3. **TRASH**:
+* Dimensions: 25 px x 25 px
+
+⋅⋅4. **TREASURE**:
+* Dimensions: 25 px x 25 px
