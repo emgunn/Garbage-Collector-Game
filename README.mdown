@@ -12,16 +12,15 @@ How to Play:
 
 About:
 ======
-Version 1.0
-Coded in Python with the Pygame library
+* Version 1.0
+* Coded in Python with the Pygame library
+* Images were made manually in MS Paint and Gimp
 
 Images:
 =======
 **1. BANNER:**
 * Dimensions: 600 px * 100 px
 * Location: Always (0, 0)
-
-![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/fixed_banner.png "Banner")
 
 **2. GARBAGE CAN:**
 * Dimensions: 50 px * 50 px
@@ -37,3 +36,8 @@ Images:
 * Dimensions: 25 px * 25 px
 
 ![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/small_gem.png "Small Gem")
+
+**5. ICON:**
+* Dimensions: 32 px * 32 px
+
+![alt text](https://github.com/emgunn/Garbage-Collector-Game/raw/master/images/icon.png "Icon")

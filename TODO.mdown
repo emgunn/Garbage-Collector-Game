@@ -1,0 +1,8 @@
+TODO:
+=====
+
+1. Options page
+2. Change time limit
+3. Change move speed
+4. Change point increment
+5. Toggle combo bonus

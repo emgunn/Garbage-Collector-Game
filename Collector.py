@@ -27,17 +27,21 @@ FPS = 120
 # scoreboard
 score_xy = (444, 70)
 checkbox_xy = (318, 68)
+# sound checkbox
+sound_xy = (563, 9)
 # settings
 score_interval = 100
 bonus = 10
 penalty_interval = 200
-time_limit = 60
+time_limit = 10
+sound_on = True
 
 # colors
 white = (255, 255, 255)
 black = (0, 0, 0)
+dark_gray = (169, 169, 169)
 red = (255, 0, 0)
-green = (0, 255, 0)
+green = (0, 64, 0)
 blue = (0, 0, 255)
 
 # initialize pygame modules
@@ -54,6 +58,13 @@ clock = pygame.time.Clock()
 icon = pygame.image.load('images/icon.png')
 title_screen = pygame.image.load('images/title_screen.png')
 about_screen = pygame.image.load('images/about_screen.png')
+leaderboard_screen = pygame.image.load('images/leaderboard_screen.png')
+pause_screen = pygame.image.load('images/pause_screen.png')
+game_over_screen = pygame.image.load('images/game_over_screen.png')
+trash_icon = pygame.image.load('images/trash_bag.png')
+treasure_icon = pygame.image.load('images/treasure.png')
+sound_on_image = pygame.image.load('images/sound_on.png')
+sound_off_image = pygame.image.load('images/sound_off.png')
 garbage_can = pygame.image.load('images/garbagecan.png')
 paper = pygame.image.load('images/paper.png')
 banana = pygame.image.load('images/banana.png')
@@ -86,30 +97,133 @@ def treasure(x, y, type):
 def garbage(x, y):
     gameDisplay.blit(garbage_can, (x, y))
 
+def text_objects(text, font, color):
+    textSurface = font.render(text, True, color)
+    return textSurface, textSurface.get_rect()
+
 def update_score(new_score):
     score_font = pygame.font.Font('freesansbold.ttf', 24)
     surface, rectangle = text_objects("%d" % new_score, score_font, black)
     gameDisplay.blit(surface, score_xy)
 
-def text_objects(text, font, color):
-    textSurface = font.render(text, True, color)
-    return textSurface, textSurface.get_rect()
+# handles updating leaderboard
+def update_leaderboard(score):
+    leaderboard = open("data/leaderboard.txt", "r+")
+    scores = leaderboard.readlines()
+    inserted = False
+    for x in range(0, 5):
+        # compare the int values of the scores
+        if score > int(scores[x]):
+            # insert the score in the right place
+            inserted = True
+            scores.insert(x, "%s\n" % score)
+            break
+    # change scores back to strings with newlines
+    for y in range(0, 5):
+        scores[y] = "%s" % scores[y]
+    # delete the lowest score (6th) and handle edge case of score 0
+    if int(score) > 0 and inserted:
+        scores = scores[:-1]
+    # delete contents of leaderboard.txt
+    leaderboard.seek(0)
+    leaderboard.truncate()
+    leaderboard.close()
+    # append new data to leaderboard.txt
+    leaderboard = open("data/leaderboard.txt", "a")
+    leaderboard.writelines(scores)
+    leaderboard.close()
 
-def message_display(text):
-    large_text = pygame.font.Font('freesansbold.ttf', 80)
-    TextSurf, TextRect = text_objects(text, large_text, black)
-    TextRect.center = (display_width / 2, display_height / 2)
-    gameDisplay.blit(TextSurf, TextRect)
-    pygame.display.update()
+# handles leaderboard screen
+def leaderboard_loop():
+    # open leaderboard file
+    leaderboard = open("data/leaderboard.txt", "r")
+    scores = leaderboard.readlines()
+    leaderboard.close()
+    score_heights = [270, 320, 370, 420, 470]
 
-    time.sleep(2)
+    gameDisplay.blit(leaderboard_screen, (0, 0))
 
-    game_loop()
+    surface = [0, 0, 0, 0, 0, 0]
+    rectangle = [0, 0, 0, 0, 0, 0]
+    leaderboard_font = pygame.font.Font('freesansbold.ttf', 32)
+    for x in range(0, 5):
+        # use [:-1] to delete the newline character \n
+        surface[x], rectangle[x] = text_objects("%s" % scores[x][:-1], leaderboard_font, red)
+        rectangle[x].center = (display_width / 2, score_heights[x])
+        gameDisplay.blit(surface[x], rectangle[x])
 
-def RIP():
-    message_display('Game Over')
+    while True:
 
-def about():
+        for event in pygame.event.get():
+            # if x button is clicked
+            if event.type == pygame.QUIT:
+                # quit game
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # main menu: (148, 518) to (447, 577)
+                if pygame.mouse.get_pos()[0] >= 148 and pygame.mouse.get_pos()[0] <= 447 and \
+                        pygame.mouse.get_pos()[1] >= 518 and pygame.mouse.get_pos()[1] <= 577:
+                    leaderboard.close()
+                    if sound_on:
+                        click.play()
+                    game_loop(False)
+
+        pygame.display.update()
+
+        clock.tick(FPS)
+
+# handles game over screen
+def game_over_loop(score, num_trash, num_treasure, largest_combo):
+
+    update_leaderboard(score)
+
+    # display score
+    game_over_font = pygame.font.Font('freesansbold.ttf', 60)
+    stats_font = pygame.font.Font('freesansbold.ttf', 50)
+    surface1, rectangle1 = text_objects("%d" % score, game_over_font, red)
+    rectangle1.center = (display_width / 2, (display_height / 3) + 10)
+    surface2, rectangle2 = text_objects("Final Score:", game_over_font, red)
+    rectangle2.center = (display_width / 2, (display_height / 4) - 10)
+    surface3, rectangle3 = text_objects("x %d" % num_trash, stats_font, green)
+    rectangle3.center = ((display_width / 2) - 90, (display_height / 2) - 20)
+    surface4, rectangle4 = text_objects("x %d" % num_treasure, stats_font, dark_gray)
+    rectangle4.center = (display_width - 150, (display_height / 2) - 20)
+    surface5, rectangle5 = text_objects("%d" % largest_combo, stats_font, blue)
+    rectangle5.center = ((display_width / 2) + 180, (display_height / 2) + 55)
+
+    while True:
+        for event in pygame.event.get():
+            # if x button is clicked
+            if event.type == pygame.QUIT:
+                # quit game
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # play again: (150, 400) to (449, 459)
+                if pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
+                    pygame.mouse.get_pos()[1] >=400 and pygame.mouse.get_pos()[1] <= 459:
+                    if sound_on:
+                        click.play()
+                    game_loop(True)
+                # main menu: (150, 320) to (449, 379)
+                elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
+                     pygame.mouse.get_pos()[1] >= 470 and pygame.mouse.get_pos()[1] <= 529:
+                    if sound_on:
+                        click.play()
+                    game_loop(False)
+
+        gameDisplay.blit(game_over_screen, (0, 0))
+        gameDisplay.blit(surface1, rectangle1)
+        gameDisplay.blit(surface2, rectangle2)
+        gameDisplay.blit(surface3, rectangle3)
+        gameDisplay.blit(surface4, rectangle4)
+        gameDisplay.blit(surface5, rectangle5)
+        gameDisplay.blit(trash_icon, (100, 245))
+        gameDisplay.blit(treasure_icon, (345, 250))
+        pygame.display.update()
+        clock.tick(FPS)
+
+# handles about screen
+def about_loop():
     while True:
         for event in pygame.event.get():
             # if x button is clicked
@@ -121,7 +235,8 @@ def about():
                 # main menu: (150, 460) to (449, 519)
                 if pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >=460 and pygame.mouse.get_pos()[1] <= 519:
-                    click.play()
+                    if sound_on:
+                        click.play()
                     time.sleep(0.2)
                     return
         gameDisplay.blit(about_screen, (0, 0))
@@ -141,29 +256,36 @@ def title_loop():
                 # start game: (150, 250) to (449, 309)
                 if pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >= 250 and pygame.mouse.get_pos()[1] <= 309:
-                    click.play()
+                    if sound_on:
+                        click.play()
                     time.sleep(0.2)
                     return
                 # leaderboard: (150, 320) to (449, 379)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >= 320 and pygame.mouse.get_pos()[1] <= 379:
-                    click.play()
+                    if sound_on:
+                        click.play()
+                    leaderboard_loop()
+                    #update_leaderboard()
                 # options: (150, 390) to (449, 449)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >= 390 and pygame.mouse.get_pos()[1] <= 449:
-                    click.play()
+                    if sound_on:
+                        click.play()
                 # about: (150, 460) to (449, 519)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                      pygame.mouse.get_pos()[1] >= 460 and pygame.mouse.get_pos()[1] <= 519:
-                    click.play()
+                    if sound_on:
+                        click.play()
                     time.sleep(0.2)
-                    about()
+                    about_loop()
 
 
         gameDisplay.blit(title_screen, (0, 0))
         pygame.display.update()
         clock.tick(FPS)
 
+# handles countdown before game start
 def countdown_loop():
     start_time = pygame.time.get_ticks()
     countdown_time = 0
@@ -175,9 +297,9 @@ def countdown_loop():
         gameDisplay.blit(surface, rectangle)
         pygame.display.update()
         clock.tick(FPS)
-
         countdown_time = pygame.time.get_ticks()
-    click.play()
+    if sound_on:
+        click.play()
     while (countdown_time - start_time) < 2000 and (countdown_time - start_time) >= 1000:
         gameDisplay.fill(white)
         countdown_font = pygame.font.Font('freesansbold.ttf', 100)
@@ -186,9 +308,9 @@ def countdown_loop():
         gameDisplay.blit(surface, rectangle)
         pygame.display.update()
         clock.tick(FPS)
-
         countdown_time = pygame.time.get_ticks()
-    click.play()
+    if sound_on:
+        click.play()
     while (countdown_time - start_time) < 3000 and (countdown_time - start_time) >= 2000:
         gameDisplay.fill(white)
         countdown_font = pygame.font.Font('freesansbold.ttf', 100)
@@ -197,11 +319,54 @@ def countdown_loop():
         gameDisplay.blit(surface, rectangle)
         pygame.display.update()
         clock.tick(FPS)
-
         countdown_time = pygame.time.get_ticks()
-    ding.play()
+    if sound_on:
+        ding.play()
 
-def game_loop():
+# handles pause screen
+def pause_loop():
+    pause_count = 0
+    while True:
+
+        for event in pygame.event.get():
+            # if x button is clicked
+            if event.type == pygame.QUIT:
+                # quit game
+                sys.exit()
+            # if pause is called again, leave pause menu
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return pause_count
+            # if resume game button is clicked
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # resume: (100, 310) to (499, 359)
+                if pygame.mouse.get_pos()[0] >= 100 and pygame.mouse.get_pos()[0] <= 499 and \
+                    pygame.mouse.get_pos()[1] >= 310 and pygame.mouse.get_pos()[1] <= 359:
+                    if sound_on:
+                        click.play()
+                    return pause_count
+                # restart: (100, 380) to (499, 429)
+                if pygame.mouse.get_pos()[0] >= 100 and pygame.mouse.get_pos()[0] <= 499 and \
+                    pygame.mouse.get_pos()[1] >= 380 and pygame.mouse.get_pos()[1] <= 429:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    game_loop(True)
+                # quit to main menu: (100, 450) to (499, 499)
+                if pygame.mouse.get_pos()[0] >= 100 and pygame.mouse.get_pos()[0] <= 499 and \
+                    pygame.mouse.get_pos()[1] >= 450 and pygame.mouse.get_pos()[1] <= 499:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    game_loop(False)
+        gameDisplay.blit(pause_screen, (50, 50))
+        pygame.display.update()
+        clock.tick(FPS)
+        # handles the delay in game_loop() since pausing still runs the clock
+        pause_count += clock.get_time()
+
+
+def game_loop(skip_title):
 
     # garbage can starting position
     x = (display_width * 0.5)
@@ -219,24 +384,32 @@ def game_loop():
     previous_success = False
 
     treasure_toggle_on = True
+    game_sound_on = True
 
     trash_on_screen = False
     treasure_on_screen = False
 
     trash_done_moving = True
-    trash_move_count = 0
     treasure_done_moving = True
+    trash_move_count = 0
     treasure_move_count = 0
 
+    current_time = 0
+
     game_score = 0
+    num_trash = 0
+    num_treasure = 0
+    largest_combo = 0
 
     time.sleep(0.2)
 
-    # start title loop
-    title_loop()
+    if not skip_title:
+        # start title loop
+        title_loop()
 
     countdown_loop()
 
+    start_time = pygame.time.get_ticks()
     # main game loop
     while True:
 
@@ -254,6 +427,10 @@ def game_loop():
                 if not first_four_runs:
                     if event.key == pygame.K_x:
                         treasure_toggle_on = not treasure_toggle_on
+                    if event.key == pygame.K_ESCAPE:
+                        start_time += pause_loop()
+                    if event.key == pygame.K_s:
+                        game_sound_on = not game_sound_on
                     if event.key == pygame.K_LEFT:
                         x_change = -dist
                     elif event.key == pygame.K_RIGHT:
@@ -303,8 +480,24 @@ def game_loop():
         surface, rectangle = text_objects("%d" % game_score, score_font, black)
         gameDisplay.blit(surface, score_xy)
 
-        # handle time clock
+        # handles time clock
+        if (current_time - start_time) < time_limit * 1000:
+            current_time = pygame.time.get_ticks()
+            time_limit_font = pygame.font.Font('freesansbold.ttf', 60)
+            time_elapsed = math.floor((current_time - start_time) / 1000)
+            surface, rectangle = text_objects("%d" % (time_limit - time_elapsed), time_limit_font, red)
+            rectangle.center = (display_width / 2, 36)
+            gameDisplay.blit(surface, rectangle)
 
+        else:
+            game_over_loop(game_score, num_trash, num_treasure, largest_combo)
+
+
+        # handles sound toggle
+        if game_sound_on:
+            gameDisplay.blit(sound_on_image, sound_xy)
+        else:
+            gameDisplay.blit(sound_off_image, sound_xy)
 
         # handles toggle checkbox
         if treasure_toggle_on:
@@ -369,13 +562,17 @@ def game_loop():
             game_score += (score_interval + (bonus * combo))
             trash_on_screen = False
             update_score(game_score)
+
+            # update stats
+            num_trash += 1
             if previous_success:
                 combo += 1
+            if combo > largest_combo:
+                largest_combo = combo
             previous_success = True
 
-            ding.play()
-
-            time.sleep(0.1)
+            if game_sound_on:
+                ding.play()
 
         # only if treasure is toggled on
         if treasure_toggle_on:
@@ -438,13 +635,15 @@ def game_loop():
                 treasure_on_screen = False
                 update_score(game_score)
 
+                # update stats
+                num_treasure += 1
                 previous_success = False
                 combo = 0
 
-                hit.play()
+                if game_sound_on:
+                    hit.play()
 
                 time.sleep(0.1)
-
 
         # handles border rules
         if x < 0:
@@ -468,6 +667,6 @@ def game_loop():
         pygame.display.update()
         clock.tick(FPS)
 
-game_loop()
+game_loop(False)
 pygame.quit()
 quit()
