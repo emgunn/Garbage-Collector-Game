@@ -74,6 +74,7 @@ selected = pygame.image.load('images/selected.png')
 garbage_can = pygame.image.load('images/garbagecan.png')
 paper = pygame.image.load('images/paper.png')
 banana = pygame.image.load('images/banana.png')
+pizza = pygame.image.load('images/pizza.png')
 banner = pygame.image.load('images/fixed_banner.png')
 unchecked = pygame.image.load('images/unchecked.png')
 checkmark = pygame.image.load('images/checkmark.png')
@@ -94,6 +95,9 @@ def trash(x, y, type):
     # banana
     elif type == 2:
         gameDisplay.blit(banana, (x, y))
+    # pizza
+    elif type == 3:
+        gameDisplay.blit(pizza, (x, y))
 
 # place treasure of given type at given x, y
 def treasure(x, y, type):
@@ -649,7 +653,7 @@ def game_loop(skip_title):
         if not trash_on_screen:
             trash_x = random.randint(0, 575)
             trash_y = random.randint(100, 575)
-            trash_choice = random.randint(1, 2)
+            trash_choice = random.randint(1, 3)
             if not first_four_runs:
                 if treasure_toggle_on:
                     while treasure_x + 25 > trash_x and treasure_x < trash_x + 25:
