@@ -20,8 +20,9 @@ trash_height = 25
 # treasure
 treasure_width = 25
 treasure_height = 25
-dist = 10
-
+options_move_speed = open("data/options/move_speed.txt", "r")
+move_speed = int(options_move_speed.read())
+options_move_speed.close()
 FPS = 120
 
 # scoreboard
@@ -33,7 +34,10 @@ sound_xy = (563, 9)
 score_interval = 100
 bonus = 10
 penalty_interval = 200
-time_limit = 10
+# read time limit from saved text file
+options_time_limit = open("data/options/time_limit.txt", "r")
+time_limit = int(options_time_limit.read())
+options_time_limit.close()
 sound_on = True
 
 # colors
@@ -57,21 +61,25 @@ clock = pygame.time.Clock()
 # load images
 icon = pygame.image.load('images/icon.png')
 title_screen = pygame.image.load('images/title_screen.png')
-about_screen = pygame.image.load('images/about_screen.png')
 leaderboard_screen = pygame.image.load('images/leaderboard_screen.png')
+options_screen = pygame.image.load('images/options_screen.png')
+about_screen = pygame.image.load('images/about_screen.png')
 pause_screen = pygame.image.load('images/pause_screen.png')
 game_over_screen = pygame.image.load('images/game_over_screen.png')
 trash_icon = pygame.image.load('images/trash_bag.png')
 treasure_icon = pygame.image.load('images/treasure.png')
 sound_on_image = pygame.image.load('images/sound_on.png')
 sound_off_image = pygame.image.load('images/sound_off.png')
+selected = pygame.image.load('images/selected.png')
 garbage_can = pygame.image.load('images/garbagecan.png')
 paper = pygame.image.load('images/paper.png')
 banana = pygame.image.load('images/banana.png')
 banner = pygame.image.load('images/fixed_banner.png')
 unchecked = pygame.image.load('images/unchecked.png')
 checkmark = pygame.image.load('images/checkmark.png')
-small_gem = pygame.image.load('images/small_gem.png')
+blue_gem = pygame.image.load('images/blue_gem.png')
+red_gem = pygame.image.load('images/red_gem.png')
+coin = pygame.image.load('images/coin.png')
 
 # load sounds
 ding = pygame.mixer.Sound('sounds/ding.wav')
@@ -89,9 +97,15 @@ def trash(x, y, type):
 
 # place treasure of given type at given x, y
 def treasure(x, y, type):
-    # small gem
+    # blue gem
     if type == 1:
-        gameDisplay.blit(small_gem, (x, y))
+        gameDisplay.blit(blue_gem, (x, y))
+    # red gem
+    elif type == 2:
+        gameDisplay.blit(red_gem, (x, y))
+    # coin
+    elif type == 3:
+        gameDisplay.blit(coin, (x, y))
 
 # place garbage can at given x, y
 def garbage(x, y):
@@ -166,10 +180,10 @@ def leaderboard_loop():
                     leaderboard.close()
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
                     game_loop(False)
 
         pygame.display.update()
-
         clock.tick(FPS)
 
 # handles game over screen
@@ -185,9 +199,7 @@ def game_over_loop(score, num_trash, num_treasure, largest_combo):
     surface2, rectangle2 = text_objects("Final Score:", game_over_font, red)
     rectangle2.center = (display_width / 2, (display_height / 4) - 10)
     surface3, rectangle3 = text_objects("x %d" % num_trash, stats_font, green)
-    rectangle3.center = ((display_width / 2) - 90, (display_height / 2) - 20)
     surface4, rectangle4 = text_objects("x %d" % num_treasure, stats_font, dark_gray)
-    rectangle4.center = (display_width - 150, (display_height / 2) - 20)
     surface5, rectangle5 = text_objects("%d" % largest_combo, stats_font, blue)
     rectangle5.center = ((display_width / 2) + 180, (display_height / 2) + 55)
 
@@ -203,22 +215,142 @@ def game_over_loop(score, num_trash, num_treasure, largest_combo):
                     pygame.mouse.get_pos()[1] >=400 and pygame.mouse.get_pos()[1] <= 459:
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
                     game_loop(True)
                 # main menu: (150, 320) to (449, 379)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                      pygame.mouse.get_pos()[1] >= 470 and pygame.mouse.get_pos()[1] <= 529:
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
                     game_loop(False)
 
         gameDisplay.blit(game_over_screen, (0, 0))
         gameDisplay.blit(surface1, rectangle1)
         gameDisplay.blit(surface2, rectangle2)
-        gameDisplay.blit(surface3, rectangle3)
-        gameDisplay.blit(surface4, rectangle4)
+        gameDisplay.blit(surface3, (185, 253))
+        gameDisplay.blit(surface4, (420, 253))
         gameDisplay.blit(surface5, rectangle5)
         gameDisplay.blit(trash_icon, (100, 245))
         gameDisplay.blit(treasure_icon, (345, 250))
+        pygame.display.update()
+        clock.tick(FPS)
+
+# reads option file and
+# takes in unopened file
+def overwrite_option(type, new_val):
+    # if time limit option
+    if type == 1:
+        file = open("data/options/time_limit.txt", "w")
+    # if move speed option
+    elif type == 2:
+        file = open("data/options/move_speed.txt", "w")
+    file.seek(0)
+    file.write("%s" % new_val)
+    file.close()
+
+# reads the option file
+def read_option(type):
+    # if time limit option
+    if type == 1:
+        file = open("data/options/time_limit.txt", "r")
+    # if move speed option
+    elif type == 2:
+        file = open("data/options/move_speed.txt", "r")
+    old_val = int(file.readlines()[0])
+    file.close()
+    return old_val
+
+# handles options screen
+def option_loop():
+
+    gameDisplay.blit(options_screen, (0, 0))
+    choice1 = read_option(1)
+    choice2 = read_option(2)
+
+    while True:
+        for event in pygame.event.get():
+            # if x button is clicked
+            if event.type == pygame.QUIT:
+                # quit game
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # main menu: (148, 518) to (447, 577)
+                if pygame.mouse.get_pos()[0] >= 148 and pygame.mouse.get_pos()[0] <= 447 and \
+                                pygame.mouse.get_pos()[1] >= 518 and pygame.mouse.get_pos()[1] <= 577:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    title_loop()
+                # time limit set to 10 seconds: (90, 300) to (209, 329)
+                if pygame.mouse.get_pos()[0] >= 90 and pygame.mouse.get_pos()[0] <= 209 and \
+                                pygame.mouse.get_pos()[1] >= 300 and pygame.mouse.get_pos()[1] <= 329:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(1, 10)
+                    choice1 = 10
+
+                # time limit set to 30 seconds: (240, 300) to (359, 329)
+                if pygame.mouse.get_pos()[0] >= 240 and pygame.mouse.get_pos()[0] <= 359 and \
+                                pygame.mouse.get_pos()[1] >= 300 and pygame.mouse.get_pos()[1] <= 329:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(1, 30)
+                    choice1 = 30
+
+                # time limit set to 30 seconds: (390, 300) to (509, 329)
+                if pygame.mouse.get_pos()[0] >= 390 and pygame.mouse.get_pos()[0] <= 509 and \
+                                pygame.mouse.get_pos()[1] >= 300 and pygame.mouse.get_pos()[1] <= 329:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(1, 60)
+                    choice1 = 60
+                # move speed set to slow (5): (90, 380) to (209, 409)
+                if pygame.mouse.get_pos()[0] >= 90 and pygame.mouse.get_pos()[0] <= 209 and \
+                                pygame.mouse.get_pos()[1] >= 380 and pygame.mouse.get_pos()[1] <= 409:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(2, 5)
+                    choice2 = 5
+
+                # move speed set to medium (10): (240, 380) to (359, 409)
+                if pygame.mouse.get_pos()[0] >= 240 and pygame.mouse.get_pos()[0] <= 359 and \
+                                pygame.mouse.get_pos()[1] >= 380 and pygame.mouse.get_pos()[1] <= 409:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(2, 10)
+                    choice2 = 10
+
+                # move speed set to fast: (390, 380) to (509, 409)
+                if pygame.mouse.get_pos()[0] >= 390 and pygame.mouse.get_pos()[0] <= 509 and \
+                                pygame.mouse.get_pos()[1] >= 380 and pygame.mouse.get_pos()[1] <= 409:
+                    if sound_on:
+                        click.play()
+                    time.sleep(0.2)
+                    overwrite_option(2, 15)
+                    choice2 = 15
+
+        gameDisplay.blit(options_screen, (0, 0))
+        # display properly selected cursor for time limit
+        if choice1 == 10:
+            gameDisplay.blit(selected, (90, 300))
+        elif choice1 == 30:
+            gameDisplay.blit(selected, (240, 300))
+        elif choice1 == 60:
+            gameDisplay.blit(selected, (390, 300))
+        # display properly selected cursor for move speed
+        if choice2 == 5:
+            gameDisplay.blit(selected, (90, 380))
+        elif choice2 == 10:
+            gameDisplay.blit(selected, (240, 380))
+        elif choice2 == 15:
+            gameDisplay.blit(selected, (390, 380))
+
         pygame.display.update()
         clock.tick(FPS)
 
@@ -259,19 +391,23 @@ def title_loop():
                     if sound_on:
                         click.play()
                     time.sleep(0.2)
-                    return
+                    game_loop(True)
                 # leaderboard: (150, 320) to (449, 379)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >= 320 and pygame.mouse.get_pos()[1] <= 379:
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
                     leaderboard_loop()
-                    #update_leaderboard()
+
                 # options: (150, 390) to (449, 449)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                     pygame.mouse.get_pos()[1] >= 390 and pygame.mouse.get_pos()[1] <= 449:
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
+                    option_loop()
+
                 # about: (150, 460) to (449, 519)
                 elif pygame.mouse.get_pos()[0] >= 150 and pygame.mouse.get_pos()[0] <= 449 and \
                      pygame.mouse.get_pos()[1] >= 460 and pygame.mouse.get_pos()[1] <= 519:
@@ -279,7 +415,6 @@ def title_loop():
                         click.play()
                     time.sleep(0.2)
                     about_loop()
-
 
         gameDisplay.blit(title_screen, (0, 0))
         pygame.display.update()
@@ -344,6 +479,7 @@ def pause_loop():
                     pygame.mouse.get_pos()[1] >= 310 and pygame.mouse.get_pos()[1] <= 359:
                     if sound_on:
                         click.play()
+                    time.sleep(0.2)
                     return pause_count
                 # restart: (100, 380) to (499, 429)
                 if pygame.mouse.get_pos()[0] >= 100 and pygame.mouse.get_pos()[0] <= 499 and \
@@ -409,6 +545,10 @@ def game_loop(skip_title):
 
     countdown_loop()
 
+    # read options and apply them
+    time_limit = read_option(1)
+    move_speed = read_option(2)
+
     start_time = pygame.time.get_ticks()
     # main game loop
     while True:
@@ -432,13 +572,13 @@ def game_loop(skip_title):
                     if event.key == pygame.K_s:
                         game_sound_on = not game_sound_on
                     if event.key == pygame.K_LEFT:
-                        x_change = -dist
+                        x_change = -move_speed
                     elif event.key == pygame.K_RIGHT:
-                        x_change = dist
+                        x_change = move_speed
                     elif event.key == pygame.K_UP:
-                        y_change = -dist
+                        y_change = -move_speed
                     elif event.key == pygame.K_DOWN:
-                        y_change = dist
+                        y_change = move_speed
 
             keys = pygame.key.get_pressed()
 
@@ -452,13 +592,13 @@ def game_loop(skip_title):
             if event.type == pygame.KEYUP:
                 if not first_four_runs:
                     if event.key == pygame.K_LEFT:
-                        x_change += dist
+                        x_change += move_speed
                     if event.key == pygame.K_RIGHT:
-                        x_change -= dist
+                        x_change -= move_speed
                     if event.key == pygame.K_UP:
-                        y_change += dist
+                        y_change += move_speed
                     if event.key == pygame.K_DOWN:
-                        y_change -= dist
+                        y_change -= move_speed
 
         # modify x and y of garbage can
         x += x_change
@@ -581,12 +721,12 @@ def game_loop(skip_title):
             if not treasure_on_screen:
                 treasure_x = random.randint(0, 575)
                 treasure_y = random.randint(100, 575)
-                treasure_choice = random.randint(1, 1)
+                treasure_choice = random.randint(1, 3)
                 while treasure_x + 25 > trash_x and treasure_x < trash_x + 25:
                     treasure_x = random.randint(0, 575)
                 while treasure_y + 25 > trash_y and treasure_y < trash_y + 25:
                     treasure_y = random.randint(100, 575)
-                treasure(treasure_x, treasure_y, 1)
+                treasure(treasure_x, treasure_y, treasure_choice)
                 treasure_on_screen = True
 
             # if treasure still exists, keep drawing it
