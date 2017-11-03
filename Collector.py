@@ -55,7 +55,7 @@ pygame.mixer.init()
 
 # initialize other stuff
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption('Garbage Collector')
+pygame.display.set_caption('Garbage Collector', )
 clock = pygame.time.Clock()
 
 # load images
