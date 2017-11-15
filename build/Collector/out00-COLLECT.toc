@@ -1,0 +1,402 @@
+([('Collector.exe',
+   'C:\\Users\\Eric Gunn\\Desktop\\Collector\\build\\Collector\\Collector.exe',
+   'EXECUTABLE'),
+  ('Collector.exe.manifest',
+   'C:\\Users\\Eric '
+   'Gunn\\Desktop\\Collector\\build\\Collector\\Collector.exe.manifest',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('python36.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\python36.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('ucrtbase.dll', 'C:\\WINDOWS\\system32\\ucrtbase.dll', 'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('pythoncom36.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pypiwin32_system32\\pythoncom36.dll',
+   'BINARY'),
+  ('pywintypes36.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pypiwin32_system32\\pywintypes36.dll',
+   'BINARY'),
+  ('_decimal',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_ctypes',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_multiprocessing',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('win32trace',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\win32\\win32trace.pyd',
+   'EXTENSION'),
+  ('win32ui',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\Pythonwin\\win32ui.pyd',
+   'EXTENSION'),
+  ('_win32sysloader',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\win32\\_win32sysloader.pyd',
+   'EXTENSION'),
+  ('win32api',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\win32\\win32api.pyd',
+   'EXTENSION'),
+  ('win32wnet',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\win32\\win32wnet.pyd',
+   'EXTENSION'),
+  ('win32com.shell.shell',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\win32comext\\shell\\shell.pyd',
+   'EXTENSION'),
+  ('_ssl',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('unicodedata',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('pyexpat',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_hashlib',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_bz2',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('_lzma',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_socket',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('select',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('pygame.imageext',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\imageext.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.fastevent',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\fastevent.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.scrap',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\scrap.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.mixer',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\mixer.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.mixer_music',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\mixer_music.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.font',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\font.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame._freetype',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\_freetype.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.transform',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\transform.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.time',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\time.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.overlay',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\overlay.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.pixelarray',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\pixelarray.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.mask',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\mask.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.surface',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\surface.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.pixelcopy',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\pixelcopy.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.mouse',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\mouse.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.key',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\key.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.joystick',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\joystick.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.image',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\image.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.event',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\event.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.draw',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\draw.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.display',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\display.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.cdrom',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\cdrom.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.math',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\math.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.bufferproxy',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\bufferproxy.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.color',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\color.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.surflock',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\surflock.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.rwobject',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\rwobject.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.rect',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\rect.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.constants',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\constants.cp36-win32.pyd',
+   'EXTENSION'),
+  ('pygame.base',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\base.cp36-win32.pyd',
+   'EXTENSION'),
+  ('api-ms-win-crt-utility-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-utility-l1-1-0.dll',
+   'BINARY'),
+  ('mfc140u.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\Pythonwin\\mfc140u.dll',
+   'BINARY'),
+  ('libpng16-16.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('SDL_image.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\SDL_image.dll',
+   'BINARY'),
+  ('SDL.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\SDL.dll',
+   'BINARY'),
+  ('libjpeg-8.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libjpeg-8.dll',
+   'BINARY'),
+  ('SDL_mixer.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\SDL_mixer.dll',
+   'BINARY'),
+  ('SDL_ttf.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\SDL_ttf.dll',
+   'BINARY'),
+  ('libfreetype-6.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libfreetype-6.dll',
+   'BINARY'),
+  ('api-ms-win-crt-multibyte-l1-1-0.dll',
+   'C:\\WINDOWS\\system32\\api-ms-win-crt-multibyte-l1-1-0.dll',
+   'BINARY'),
+  ('zlib1.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('libgcc_s_sjlj-1.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libgcc_s_sjlj-1.dll',
+   'BINARY'),
+  ('libtiff-5.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libtiff-5.dll',
+   'BINARY'),
+  ('libwebp-5.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libwebp-5.dll',
+   'BINARY'),
+  ('libmpg123-0.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libmpg123-0.dll',
+   'BINARY'),
+  ('libvorbisfile-3.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libvorbisfile-3.dll',
+   'BINARY'),
+  ('libvorbis-0.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libvorbis-0.dll',
+   'BINARY'),
+  ('libogg-0.dll',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('data\\leaderboard.txt', 'data\\leaderboard.txt', 'DATA'),
+  ('images\\blue_gem.png', 'images\\blue_gem.png', 'DATA'),
+  ('images\\about_screen.png', 'images\\about_screen.png', 'DATA'),
+  ('images\\banana.png', 'images\\banana.png', 'DATA'),
+  ('images\\checkmark.png', 'images\\checkmark.png', 'DATA'),
+  ('images\\icon.png', 'images\\icon.png', 'DATA'),
+  ('images\\pause_screen.png', 'images\\pause_screen.png', 'DATA'),
+  ('images\\options_screen.png', 'images\\options_screen.png', 'DATA'),
+  ('images\\sound_on.png', 'images\\sound_on.png', 'DATA'),
+  ('sounds\\hit.wav', 'sounds\\hit.wav', 'DATA'),
+  ('images\\red_gem.png', 'images\\red_gem.png', 'DATA'),
+  ('data\\options\\time_limit.txt', 'data\\options\\time_limit.txt', 'DATA'),
+  ('sounds\\ding.wav', 'sounds\\ding.wav', 'DATA'),
+  ('images\\game_over_screen.png', 'images\\game_over_screen.png', 'DATA'),
+  ('images\\sound_off.png', 'images\\sound_off.png', 'DATA'),
+  ('images\\paper.png', 'images\\paper.png', 'DATA'),
+  ('data\\options\\move_speed.txt', 'data\\options\\move_speed.txt', 'DATA'),
+  ('images\\coin.png', 'images\\coin.png', 'DATA'),
+  ('sounds\\click.WAV', 'sounds\\click.WAV', 'DATA'),
+  ('images\\proper_banner.png', 'images\\proper_banner.png', 'DATA'),
+  ('freesansbold.ttf', 'freesansbold.ttf', 'DATA'),
+  ('images\\placeholder_trash.png', 'images\\placeholder_trash.png', 'DATA'),
+  ('images\\pizza.png', 'images\\pizza.png', 'DATA'),
+  ('images\\unchecked.png', 'images\\unchecked.png', 'DATA'),
+  ('images\\banner.png', 'images\\banner.png', 'DATA'),
+  ('images\\garbagecan.png', 'images\\garbagecan.png', 'DATA'),
+  ('images\\treasure.png', 'images\\treasure.png', 'DATA'),
+  ('images\\selected.png', 'images\\selected.png', 'DATA'),
+  ('images\\title_screen.png', 'images\\title_screen.png', 'DATA'),
+  ('images\\trash_bag.png', 'images\\trash_bag.png', 'DATA'),
+  ('images\\leaderboard_screen.png', 'images\\leaderboard_screen.png', 'DATA'),
+  ('images\\fixed_banner.png', 'images\\fixed_banner.png', 'DATA'),
+  ('base_library.zip',
+   'C:\\Users\\Eric '
+   'Gunn\\Desktop\\Collector\\build\\Collector\\base_library.zip',
+   'DATA'),
+  ('lib2to3\\Grammar3.6.2.final.0.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\Grammar3.6.2.final.0.pickle',
+   'DATA'),
+  ('lib2to3\\tests\\data\\README',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\tests\\data\\README',
+   'DATA'),
+  ('lib2to3\\PatternGrammar.txt',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\PatternGrammar.txt',
+   'DATA'),
+  ('lib2to3\\PatternGrammar3.6.2.candidate.2.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\PatternGrammar3.6.2.candidate.2.pickle',
+   'DATA'),
+  ('lib2to3\\Grammar.txt',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\Grammar.txt',
+   'DATA'),
+  ('Include\\pyconfig.h',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\Include\\pyconfig.h',
+   'DATA'),
+  ('lib2to3\\Grammar3.6.2.candidate.2.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\Grammar3.6.2.candidate.2.pickle',
+   'DATA'),
+  ('lib2to3\\PatternGrammar3.6.2.final.0.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\PatternGrammar3.6.2.final.0.pickle',
+   'DATA'),
+  ('lib2to3\\PatternGrammar3.6.3.candidate.1.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\PatternGrammar3.6.3.candidate.1.pickle',
+   'DATA'),
+  ('lib2to3\\Grammar3.6.3.final.0.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\Grammar3.6.3.final.0.pickle',
+   'DATA'),
+  ('lib2to3\\Grammar3.6.3.candidate.1.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\Grammar3.6.3.candidate.1.pickle',
+   'DATA'),
+  ('lib2to3\\PatternGrammar3.6.3.final.0.pickle',
+   'C:\\Users\\Eric '
+   'Gunn\\AppData\\Local\\Programs\\Python\\Python36-32\\lib\\lib2to3\\PatternGrammar3.6.3.final.0.pickle',
+   'DATA')],)

@@ -1,6 +1,5 @@
 import random
 import sys
-import os
 import pygame
 import time
 import math
