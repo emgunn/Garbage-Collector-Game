@@ -3,6 +3,10 @@ README v1.0
 
 Garbage Collector is a simple game where you control a trash can and attempt to collect as many pieces of trash until the given time limit is reached. Avoid pieces of treasure as you are not supposed to throw treasure away.
 
+TO PLAY:
+========
+Go to dist/Collector and open Collector.exe there
+
 **WARNING:**
 ============
 * The leaderboard page uses a text file to load the top 5 scores. If there are not 5 entries (a number per line for 5 lines) plus an empty 6th line, clicking the leaderboard page will crash the game. As long as you don't modify data/leaderboard.txt manually, it should be fine. If you want to clear the leaderboard manually, just put 1's on the first 5 lines and leave the 6th line empty.
